@@ -1,0 +1,24 @@
+*{
+     margin: 0;
+     padding: 0;
+}
+.container{
+     display: flex;
+     justify-content: center;
+     align-items: center;
+     background-color: rgb(194, 105, 105);
+     height: 100vh;
+     width: 100vw;
+     flex-direction: column;
+     gap: 30px;
+}
+h1{
+     color: rgb(235, 222, 49);
+}
+.btn{
+     height: 30px;
+     width: 90px;
+     padding: 6px;
+     background-color: beige;
+     color: black;
+}

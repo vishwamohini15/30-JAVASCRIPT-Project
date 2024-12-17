@@ -1,0 +1,33 @@
+*{
+     margin: 0;
+     padding: 0;
+}
+.container{
+     height: 100vh;
+     width: 100vw;
+     background-color: lightslategray;
+     color: white;
+     display: flex;
+     justify-content: center;
+     align-items: center;
+     flex-direction: column;
+}
+form{
+     height: 220px;
+     width: 300px;
+     background-color: lawngreen;
+     border-radius: 29px;
+     color: black;
+     display: flex;
+     justify-content: center;
+     align-items: center;
+     flex-direction: column;
+     gap: 12px;
+}
+
+button{
+     height: 40px;
+     width: 90px;
+     font-size: 19px;
+     border-radius: 13px;
+}

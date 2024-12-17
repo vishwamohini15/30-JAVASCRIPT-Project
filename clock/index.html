@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+     <meta charset="UTF-8">
+     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+     <title>Clock</title>
+     <style>
+          *{
+               margin: 0;
+               padding: 0;
+          }
+          .container{
+               height: 100vh;
+               width: 100vw;
+               display: flex;
+               justify-content: center;
+               align-items: center;
+               background-color: lightseagreen;
+          }
+          .box{
+               height: 90px;
+               width: 150px;
+               padding: 6px;
+               background-color: darkorange;
+               color: white;
+               border-radius: 20px;
+               box-shadow: 4px 6px 4px 6px pink;
+               text-align: center;
+               display: flex;
+               justify-content: center;
+               align-items: center;
+               font-size: 23px;
+          }
+     </style>
+</head>
+<body>
+     <div class="container">
+          <div class="box"></div>
+     </div>
+
+     <script>
+          let boxElm=document.querySelector(".box")
+          setInterval(() => {
+               let date=new Date()
+               boxElm.innerHTML=date.toLocaleTimeString()
+          }, 1000);
+     </script>
+</body>
+</html>
