@@ -12,6 +12,9 @@
      align-items: center;
      flex-direction: column;
 }
+h1{
+     margin: 10px;
+}
 form{
      height: 220px;
      width: 300px;
@@ -23,6 +26,7 @@ form{
      align-items: center;
      flex-direction: column;
      gap: 12px;
+     box-shadow: 3px 3px 3px 3px yellow;
 }
 
 button{
@@ -30,4 +34,26 @@ button{
      width: 90px;
      font-size: 19px;
      border-radius: 13px;
+}
+.result p{
+     margin: 12px;
+}
+
+.pone{
+     font-size: 22px;
+     color:  red;
+     background-color: #fff;
+     /* display: none; */
+}
+.bmi{
+     padding: 7px;
+     border: 2px solid rgb(254, 183, 3);
+     text-align: center;
+     display: flex;
+     justify-content: center;
+     align-items: center;
+     gap: 14px;
+     margin: 29px;
+     font-size: 19px;
+     color: rgb(248, 3, 3);
 }
