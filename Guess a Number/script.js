@@ -1,96 +1,95 @@
-let inputEl=document.querySelector("#guessnumb")
-let subtn=document.querySelector("#subtn")
-let messageEl=document.querySelector(".message")
-let prevguess=document.querySelector("#prevguess")
-let remguess=document.querySelector("#remanguess")
-let lowhigh=document.querySelector(".loworhig")
+let inputEl = document.querySelector("#guessnumb")
+let subtn = document.querySelector("#subtn")
+let messageEl = document.querySelector(".message")
+let prevguess = document.querySelector("#prevguess")
+let remguess = document.querySelector("#remanguess")
+let lowhigh = document.querySelector(".loworhig")
 
-let p=document.createElement('p')
-let randomNum=parseInt(Math.floor(Math.random()*100+1))
-let yourguess=[]
-let guesleft=1;
-let Playgame=true;
+let p = document.createElement('p')
+let randomNum = parseInt(Math.floor(Math.random() * 100 + 1))
+let yourguess = []
+let guesleft = 1;
+let Playgame = true;
 
 if (Playgame) {
-     subtn.addEventListener("click", (e)=>{
+     subtn.addEventListener("click", (e) => {
           e.preventDefault()
-          let guess=parseInt(inputEl.value)
+          let guess = parseInt(inputEl.value)
           console.log(guess);
+
           validation(guess)
-          
+
      })
 }
 
-const validation=(guess)=>{
-     if (guess<0) {
-          alert("please enter more than 0")
-     }else if (guess>100) {
-          alert("please type less than 100")
-     }else{
-          yourguess.push(guess)
-          if (guess===11) {
-               guessNumber(guess)
-               console.log("you limit is exced")
-               displaymessage(`game over, you limit is excide ${guess}`)
+const validation = (guess) => {
+     if (isNaN(guess)) {
+          alert("type valid number");
+
+     } else if (guess <= 0) {
+          alert("type valid number");
+
+     } else if (guess >= 100) {
+          alert("type valid number");
+
+     } else {
+          yourguess.push(guess);
+          if (guesleft === 11) {
+               displayguess(guess)
+               displaymessage(`your game is over, random number is ${randomNum}`)
                endgame()
-               
-          }else{
+          } else {
+               displayguess(guess)
                checkguess(guess)
-               guessNumber(guess)
           }
      }
-
 }
 
-const checkguess=(guess)=>{
-     if (guess===randomNum) {
-          console.log("congrutulation");
-          displaymessage("congrutulation")
-          endgame()
-          
+const checkguess = (guess) => {
+     if (guess === randomNum) {
+          displaymessage('congratulation, you guessed it right✨✴-')
+          endgame();
+     } else if (guess > randomNum) {
+          displaymessage(`your guesses is too HIGH, please chosse lower value`)
+
+     } else if (guess < randomNum) {
+          displaymessage("your guesses is too LOW, please chosse Higher value")
+
      }
-else if (guess>randomNum) {
-     console.log("you guess are too high");
-     displaymessage("you guess are too high")
-     
-}else if (guess<randomNum) {
-     console.log("you guess are too low");
-     displaymessage("you guess are too low");
-
-     
-}
 }
 
-const guessNumber=(guess)=>{
-     inputEl.value=' '
-     prevguess.innerHTML +=`${guess}  `
+const displayguess = (guess) => {
+     inputEl.value = ' '
+     prevguess.innerHTML += `${guess},    `
      guesleft++;
-     remguess.innerHTML =`${11-guesleft}`
+     remguess.innerHTML = `${11 - guesleft}`
 }
 
-const displaymessage=(message)=>{
-     lowhigh.innerHTML=`<h2>${message}</h2>`
+const displaymessage = (message) => {
+     lowhigh.innerHTML = `<h4>${message}</h4>`
 }
 
-const endgame=()=>{
-     inputEl.value=' '
+const endgame = () => {
+     inputEl.value = ' '
      inputEl.setAttribute('disabled', ' ')
-    p.innerHTML=`<h2 id="newgamebtn">Start a new game</h2>`
+     p.innerHTML = `<h2 id="newbtn">New Game</h2>`
      messageEl.appendChild(p)
-     Playgame=false
+     Playgame = false;
      newgame()
 }
 
-const newgame=()=>{
-     let newgamebtn=document.querySelector("#newgamebtn")
-     newgamebtn.addEventListener("click", (e)=>{
-          inputEl.value=' '
-           randomNum=parseInt(Math.floor(Math.random()*100+1))
- yourguess=[]
- guesleft=1;
-prevguess.innerHTML=' '
-remguess = `${11-guesleft}`
-inputEl.removeAttribute('disabled')
- Playgame=true;
+const newgame = () => {
+     let newgamebtn = document.querySelector("#newbtn")
+     newgamebtn.addEventListener("click", (e) => {
+
+          let randomNum = parseInt(Math.floor(Math.random() * 100 + 1))
+          yourguess = []
+          guesleft = 1;
+          prevguess.innerHTML = ' '
+          lowhigh.innerHTML = ' '
+          remguess.innerHTML = `${11 - guesleft}`
+          inputEl.removeAttribute('disabled')
+          messageEl.removeChild(p)
+          Playgame = true;
      })
 }
