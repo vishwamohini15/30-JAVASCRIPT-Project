@@ -1,40 +1,43 @@
-let inputEl=document.querySelector(".inputt")
-let subtn=document.querySelector(".btn")
-let boxes=document.querySelector(".todo")
+let inputEL=document.querySelector(".inputt")
+let btn=document.querySelector(".btn")
+let  taskbox=document.querySelector(".todo")
 
-subtn.addEventListener("click", (e)=>{
-e.preventDefault()
-if (inputEl.value==='') {
-     alert("please type something")
-}else{
-     let taskbox=document.createElement('li')
-     taskbox.classList.add("task")
-     taskbox.innerHTML=`${inputEl.value}`
-     boxes.appendChild(taskbox)
+btn.addEventListener("click", (e)=>{
+     e.preventDefault()
+     console.log(inputEL.value);
+     if (inputEL.value==='') {
+          alert("please type something")
+     }else{
+          let libox=document.createElement('li')
+          libox.classList.add('list')
+          libox.innerHTML +=`${inputEL.value}`
+          taskbox.appendChild(libox)
 
-     let cross=document.createElement('span')
-     cross.classList.add('crossbox')
-     cross.innerHTML='\u00d7'
-     taskbox.appendChild(cross)
-}
-
-saveData()
+          let spanEl=document.createElement("span")
+          spanEl.classList.add("spanbox")
+          spanEl.innerHTML="\u00d7"
+          libox.appendChild(spanEl)
+     }
+     inputEL.value=' '
+     saveData()
 })
 
-boxes.addEventListener("click", (e)=>{
+taskbox.addEventListener("click", (e)=>{
      if (e.target.tagName==='LI') {
           e.target.classList.toggle('checked')
+          saveData()
      }else if (e.target.tagName==='SPAN') {
           e.target.parentElement.remove()
           saveData()
      }
 })
 
-// const saveData=()=>{
-//      localStorage.setItem('data', inputEl.value)
-// }
+const saveData=()=>{
+     localStorage.setItem("data", taskbox.innerHTML)
+}
 
-// const showDate=()=>{
-//      inputEl.value=localStorage.getItem('data')
-// }
-// showDate()
+const showData=()=>{
+     taskbox.innerHTML=localStorage.getItem("data")
+}
+
+showData()

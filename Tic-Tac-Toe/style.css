@@ -1,0 +1,40 @@
+*{
+     margin: 0;
+     padding: 0;
+}
+
+body{
+     display: flex;
+     justify-content: center;
+     align-items: center;
+     height: 100vh;
+     width: 100vw;
+     background-color: darkorchid;
+}
+.container{
+     height: 500px;
+     width: 500px;
+     display: flex;
+     justify-content: center;
+     align-items: center;
+     border: 2px solid red;
+     flex-direction: column;
+}
+.boxes{
+     height: 350px;
+     width: 350px;
+     display: flex;
+     justify-content: center;
+     align-items: center;
+}
+.btn{
+     height: 80px;
+     width: 80px;
+     margin-top: 19px;
+
+}
+
+.message{
+     display: none;
+     color: yellow;
+}
