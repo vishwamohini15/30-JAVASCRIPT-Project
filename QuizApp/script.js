@@ -83,53 +83,51 @@ let btn=document.querySelector("#submit")
 let currquiz=0;
 let score=0;
 
+
 const loadquiz=()=>{
-const {question,options}=quizdata[currquiz]
-console.log(question);
-questionEl.innerHTML=question
-// options.forEach((currOption, index)=>(window[`Option_${index + 1}`].innerHTML=currOption))
-options.forEach((curoption,index)=> {
-  window [`option_${index+1}`].innerText=curoption
-  // `option_${value+1}.innerHTML=options`
-});
+  const{question,options}=quizdata[currquiz]
+  // console.log(question);
+  questionEl.innerHTML=`${question}`
 
+    options.forEach((curoption,index)=> {
+        window [`option_${index+1}`].innerText=curoption
+        // `option_${value+1}.innerHTML=options`
+      });
+  
 }
 
-loadquiz()
+loadquiz();
 
-const getselectedoption=()=>{
-     let answerelem=Array.from(answerEl)
-   return  answerelem.findIndex((curelem)=>curelem.checked)
+const getselectoption=()=>{
+  let answerval=Array.from(answerEl)
+  return answerval.findIndex((curelm)=>curelm.checked)
 }
 
-const disabledanswer=()=>{
-   return  answerEl.forEach((answer)=>answer.checked=false)
+const disabledoption=()=>{
+  answerEl.forEach((tyu)=>tyu.checked=false)
 }
-
 
 btn.addEventListener("click", ()=>{
-     let selectedanswer=getselectedoption()
-     console.log(selectedanswer);
+  let selectAnswerOption=getselectoption()
+  // console.log(selectAnswerOption);
+  
+if (selectAnswerOption===quizdata[currquiz].answer) {
+  score=score+1;
+  // console.log(score);
+  
+}
 
-     if (selectedanswer===quizdata[currquiz].answer) {
-          score =score+1
-     }
-
-     currquiz++;
-     if (currquiz<quizdata.length) {
-          disabledanswer()
-          loadquiz()
-     }else{
-          quize.innerHTML=`
-          <div class="result">
-          <h2> your score: ${score}/${quizdata.length} correct Answer </h2>
-          <p> ✨Congrutulation on completing the quiz✨ </p>
-          <button class="reload-button" onclick="location.reload()">play Again</button>
-          </div>
-          `
-        }
-     
+  currquiz++;
+  if (currquiz<quizdata.length) {
+    disabledoption()
+    loadquiz()
+  }else{
+    quize.innerHTML=`
+    <div class="result">
+    <h2> your score: ${score}/${quizdata.length} correct Answer </h2>
+    <h4> ✨Congrutulation on completing the quiz✨ </h4>
+    <button class="reload-button" onclick="location.reload()">play Again</button>
+    </div>
+    `
+  }
 })
-
-
-
