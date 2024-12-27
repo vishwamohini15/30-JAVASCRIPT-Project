@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Section Tabs</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <div class="tabs">
+        <button class="tab-button active" onclick="showTab('section1')">Section 1</button>
+        <button class="tab-button" onclick="showTab('section2')">Section 2</button>
+        <button class="tab-button" onclick="showTab('section3')">Section 3</button>
+    </div>
+
+    <div class="tab-content">
+        <div id="section1" class="tab-content-section active">
+            <h2>Section 1 Content</h2>
+            <p>This is the content of section 1. You can put any HTML here, including text, images, forms, etc.</p>
+        </div>
+        <div id="section2" class="tab-content-section">
+            <h2>Section 2 Content</h2>
+            <p>This is the content of section 2. It's hidden by default and only shown when you click the "Section 2" tab.</p>
+        </div>
+        <div id="section3" class="tab-content-section">
+            <h2>Section 3 Content</h2>
+            <p>This is the content of section 3. This section demonstrates how to add more sections easily.</p>
+        </div>
+    </div>
+
+    <!-- <script>
+        function showTab(sectionId) {
+            // Deactivate all tabs and sections
+            const tabButtons = document.querySelectorAll('.tab-button');
+            tabButtons.forEach(button => button.classList.remove('active'));
+
+            const tabSections = document.querySelectorAll('.tab-content-section');
+            tabSections.forEaxch(section => section.classList.remove('active'));
+
+            // Activate the clicked tab and corresponding section
+            document.querySelector(`button[onclick="showTab('${sectionId}')"]`).classList.add('active');
+            document.getElementById(sectionId).classList.add('active');
+        }
+    </script> -->
+    <script src="script.js"></script>
+</body>
+</html>
