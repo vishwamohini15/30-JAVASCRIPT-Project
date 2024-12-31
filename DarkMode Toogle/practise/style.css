@@ -1,0 +1,28 @@
+*{
+     margin: 0;
+     padding: 0;
+}
+
+body{
+     display: flex;
+     justify-content: center;
+     align-items: center;
+     height: 100vh;
+     width: 100vw;
+     background-color: lightgray;
+}
+
+.container{
+height: 36px;
+width: 80px;
+background-color: brown;
+border-radius: 19px;
+position: absolute;
+}
+.input:checked {
+     animation: toogleon .4s linear forwards;
+}
+
+.input:checked {
+     background-color: salmon;
+}

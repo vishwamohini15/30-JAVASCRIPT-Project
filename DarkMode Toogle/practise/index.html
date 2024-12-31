@@ -1,98 +1,32 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Dark Mode Toggle</title>
-    <style>
-        body {
-            transition: background-color 0.3s ease, color 0.3s ease; /* Smooth transitions */
-        }
-
-        body.dark-mode {
-            background-color: #121212; /* Dark background */
-            color: #eee; /* Light text */
-        }
-
-        .toggle-container {
-            position: fixed; /* Stay in place */
-            top: 20px;
-            right: 20px;
-        }
-
-        .toggle-label {
-            display: inline-block;
-            width: 60px;
-            height: 30px;
-            background-color: #ccc;
-            border-radius: 15px;
-            position: relative;
-            cursor: pointer;
-        }
-
-        .toggle-checkbox {
-            opacity: 0;
-            position: absolute;
-            width: 100%;
-            height: 100%;
-            cursor: pointer;
-        }
-
-        .toggle-slider {
-            position: absolute;
-            width: 26px;
-            height: 26px;
-            border-radius: 50%;
-            background-color: white;
-            top: 2px;
-            left: 2px;
-            transition: transform 0.3s ease; /* Smooth slider movement */
-        }
-
-        .toggle-checkbox:checked + .toggle-slider {
-            transform: translateX(30px); /* Move slider to the right */
-        }
-
-        /* Example content styling */
-        .content {
-            padding: 20px;
-            margin-top: 50px; /* Adjust margin to avoid overlap with toggle */
-        }
-    </style>
-</head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Dark Mode Toggle</title>
+  <link rel="stylesheet" href="style.css"> </head>
 <body>
 
-    <div class="toggle-container">
-        <label class="toggle-label">
-            <input type="checkbox" id="dark-mode-toggle" class="toggle-checkbox">
-            <span class="toggle-slider"></span>
-        </label>
-    </div>
+  <div class="container">
+    <input type="checkbox" id="dark-mode-toggle">
+  </div>
 
-    <div class="content">
-        <h1>Dark Mode Example</h1>
-        <p>This is some example text. Toggle the switch to see the dark mode in action.</p>
-        <p>More example text here.</p>
-    </div>
+  <script>
+    const toggle = document.getElementById('dark-mode-toggle');
+    const body = document.body;
 
-    <script>
-        const toggle = document.getElementById('dark-mode-toggle');
-        const body = document.body;
+    // Check for saved preference in local storage
+    const savedMode = localStorage.getItem('dark-mode');
+    if (savedMode === 'true') {
+      body.classList.add('dark-mode');
+      toggle.checked = true;
+    }
 
-        // Check for saved preference in local storage
-        const savedMode = localStorage.getItem('dark-mode');
-        if (savedMode === 'true') {
-            body.classList.add('dark-mode');
-            toggle.checked = true;
-        }
-
-        toggle.addEventListener('change', () => {
-            body.classList.toggle('dark-mode');
-
-            // Save preference to local storage
-            localStorage.setItem('dark-mode', toggle.checked);
-        });
-    </script>
+    toggle.addEventListener('change', () => {
+      body.classList.toggle('dark-mode');
+      localStorage.setItem('dark-mode', toggle.checked); // Save preference
+    });
+  </script>
 
 </body>
 </html>
