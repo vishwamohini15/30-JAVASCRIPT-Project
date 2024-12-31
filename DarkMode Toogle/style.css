@@ -1,0 +1,68 @@
+*{
+     margin: 0;
+     padding: 0;
+
+}
+body{
+display: flex;
+justify-content: center;
+align-items: center;
+height: 100vh;
+transition: .4s;
+}
+
+.input{
+visibility: hidden;
+}
+
+.label{
+ position: absolute;
+width: 80px;
+height: 40px;
+background-color: lightslategray;
+border-radius: 20px;
+cursor: pointer;
+}
+.circle{
+     width: 34px;
+     background-color: white;
+     height: 34px;
+     border-radius: 50%;
+     top: 3px;
+     position: absolute;
+     left: 3px;
+     animation: toogleoff  .4s linear forwards;
+}
+
+.input:checked + .label .circle{
+     animation: toogleon .4s linear forwards;
+}
+
+.input:checked + .label{
+     background-color: salmon;
+}
+
+@keyframes toogleon {
+     0%{
+          transform: translateX(0);
+     }
+     100%{
+          transform: translate(40px);
+     }
+}
+
+@keyframes toogleoff {
+     0%{
+          transform: translateX(40px);
+     }
+     100%{
+          transform: translate(0);
+     }
+}
+
+
+
+
+
+
+
